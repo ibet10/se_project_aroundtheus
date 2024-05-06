@@ -13,14 +13,18 @@
 @media screen and (max-width: 580px) {
   .footer {
     display: flex;
-    justify-content: center;
-    margin: 0 auto;
+    justify-content: start;
+    margin: auto;
     padding: 0;
     font-family: "Inter", Arial;
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
     color: #545454;
+  }
+
+  .footer__copyright {
+    padding-left: 19px;
   }
 }
 
