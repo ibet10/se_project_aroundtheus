@@ -24,4 +24,4 @@ Good luck and have fun!
 
 **Links**
 
-Link to presentation will be added and project will be published to GitHub after review.
+Link to the presentation will be added after project is reviewed and will be published to GitHub after corrections are made.
