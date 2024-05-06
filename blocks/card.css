@@ -38,11 +38,11 @@
   width: 21px;
   height: 18px;
   border: none;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
-  background: transparent url(../images/like-hover.svg) center no-repeat;
-  width: 21px;
-  height: 18px;
-  border: none;
+  opacity: 60%;
+  transition: 0.2s, ease-in;
+  cursor: pointer;
 }

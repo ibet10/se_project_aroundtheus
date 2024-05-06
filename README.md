@@ -8,9 +8,11 @@
 
 **Intro**
 
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
+This project was a an attempt to create a responsive webpage design using more advanced HTML and CSS code.
 
-This project was an attempt to create a responsive webpage design using more advanced HTML and CSS and introduces the use of grid layout. The naming structure follows BEM.
+The naming structure follows BEM naming rules and the project introduces the use of Grid layout in conjunction with Flexbox.
+
+The webpage was created referencing a design from Figma.
 
 **Figma**
 
@@ -18,10 +20,8 @@ This project was an attempt to create a responsive webpage design using more adv
 
 **Images**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
-
-Good luck and have fun!
+The images for this design were exported directly from Figma and were optimized so the project could load faster: [here](https://tinypng.com/).
 
 **Links**
 
-Link to the presentation will be added after project is reviewed and major corrections have been made and will be published to GitHub after.
+[Link to the presentation](https://drive.google.com/file/d/1e3-6AvMVg2PrrDzXGy83oOh1aUIS80zg/view?usp=sharing)
