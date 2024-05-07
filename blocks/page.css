@@ -20,8 +20,6 @@
 @media screen and (max-width: 580px) {
   .page__section {
     max-width: 580px;
-    width: 100%;
-    position: relative;
     margin: auto;
     padding: 0;
   }

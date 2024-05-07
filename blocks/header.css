@@ -13,10 +13,15 @@
   }
 }
 
+/*FIX PADDING BETWEEN BORDER AND LOGO*/
 @media screen and (max-width: 580px) {
+  .header {
+    padding-bottom: 32px;
+  }
   .header__logo {
     margin: 0;
     width: 126px;
     height: 24px;
+    padding-bottom: 0;
   }
 }
