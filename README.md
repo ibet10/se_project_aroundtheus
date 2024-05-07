@@ -24,4 +24,6 @@ The images for this design were exported directly from Figma and were optimized 
 
 **Links**
 
-[Link to the presentation](https://drive.google.com/file/d/1e3-6AvMVg2PrrDzXGy83oOh1aUIS80zg/view?usp=sharing)
+- Link to the [presentation](https://drive.google.com/file/d/1e3-6AvMVg2PrrDzXGy83oOh1aUIS80zg/view?usp=sharing)
+
+- Link to GitHub [publication](https://ibet10.github.io/se_project_aroundtheus/)
