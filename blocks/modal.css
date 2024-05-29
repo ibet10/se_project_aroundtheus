@@ -1,0 +1,117 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+.modal_opened {
+  display: flex;
+}
+
+.modal__container {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  padding: 36px;
+  /* margin: auto; would also center */
+}
+
+.modal__close {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  background-image: url("../images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
+
+.modal__heading {
+  width: 330px;
+  color: #000;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  size: 24px;
+  line-height: 29px;
+  margin: 0 0 54px 0;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  overflow: hidden;
+}
+
+.modal__input:first-child {
+  margin-bottom: 30px;
+}
+
+.modal__input {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 13px;
+}
+
+.modal__button {
+  cursor: pointer;
+  background: #000;
+  border-radius: 2px;
+  border: none;
+  margin: 48px 0 0 0;
+  padding: 13px 125px 18px;
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+@media screen and (max-width: 600px) {
+  .modal__container {
+    padding: 25px 22px;
+  }
+
+  .modal__close {
+    width: 26px;
+    height: 26px;
+    left: calc(100% - 26px);
+  }
+
+  .modal__heading {
+    width: 238px;
+    size: 18px;
+    line-height: 21px;
+    margin: 0 0 75px 0;
+  }
+
+  .modal__form {
+    width: 238px;
+  }
+
+  .modal__button {
+    margin: 45px 0 0 0;
+    padding: 14px 100px;
+
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
