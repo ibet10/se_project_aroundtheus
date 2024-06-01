@@ -40,6 +40,11 @@
   height: 40px;
 }
 
+.modal__close:hover {
+  opacity: 60%;
+  transition: 0.2s, ease-in;
+}
+
 .modal__heading {
   width: 330px;
   color: #000;
@@ -83,6 +88,11 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
+}
+
+.modal__button:hover {
+  opacity: 80%;
+  transition: 0.2s, ease-in;
 }
 
 @media screen and (max-width: 600px) {
