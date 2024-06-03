@@ -25,7 +25,10 @@ const initialCards = [
   },
 ];
 
+console.log(initialCards);
+
 // Elements
+
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModalPopup = document.querySelector("#profile-edit-modal");
 const profileModalCloseButton = profileEditModalPopup.querySelector(
@@ -41,13 +44,39 @@ const profileModalDescriptionInput = profileEditModalPopup.querySelector(
 );
 const profileEditModalForm =
   profileEditModalPopup.querySelector(".modal__form");
+const cardListEl = document.querySelector(".cards__list");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 
 //Functions
+
 function closePopup() {
   profileEditModalPopup.classList.remove("modal_opened");
 }
 
+/*
+clone the template element with all its content and store it in a cardElement variable
+access the card title and image and store them in variables
+set the path to the image to the link field of the object
+set the image alt text to the name field of the object
+set the card title to the name field of the object, too
+return the ready HTML element with the filled-in data
+*/
+
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+
+  cardTitleEl.textContent = cardData.name;
+  cardImageEl.src = cardData.link;
+  cardImageEl.src = cardData.name;
+
+  return cardElement;
+}
+
 //Event Handlers
+
 function handleProfileModalSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileModalTitleInput.value;
@@ -56,6 +85,7 @@ function handleProfileModalSubmit(e) {
 }
 
 //Event Listeners
+
 profileEditButton.addEventListener("click", () => {
   profileModalTitleInput.value = profileTitle.textContent;
   profileModalDescriptionInput.value = profileDescription.textContent;
@@ -65,3 +95,8 @@ profileEditButton.addEventListener("click", () => {
 profileModalCloseButton.addEventListener("click", closePopup);
 
 profileEditModalForm.addEventListener("submit", handleProfileModalSubmit);
+
+initialCards.forEach((cardData) => {
+  const cardElement = getCardElement(cardData);
+  cardListEl.append(cardElement);
+});
