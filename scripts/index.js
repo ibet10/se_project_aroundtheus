@@ -54,15 +54,6 @@ function closePopup() {
   profileEditModalPopup.classList.remove("modal_opened");
 }
 
-/*
-clone the template element with all its content and store it in a cardElement variable
-access the card title and image and store them in variables
-set the path to the image to the link field of the object
-set the image alt text to the name field of the object
-set the card title to the name field of the object, too
-return the ready HTML element with the filled-in data
-*/
-
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
@@ -70,7 +61,7 @@ function getCardElement(cardData) {
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
-  cardImageEl.src = cardData.name;
+  cardImageEl.alt = cardData.name;
 
   return cardElement;
 }
