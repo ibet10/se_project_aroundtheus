@@ -50,7 +50,7 @@ const cardTemplate =
 const addCardModal = document.querySelector("#add-card-modal");
 const addNewCardModalButton = document.querySelector(".profile__add-button");
 const addCardModalCloseButton = document.querySelector(
-  "#add-card-modal-button-close"
+  "#add-card-modal-button-close "
 );
 
 //Functions
@@ -67,6 +67,11 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
+  const likeButton = cardElement.querySelector(".card__like-button");
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
@@ -107,3 +112,12 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.append(cardElement);
 });
+
+/*
+const cardLikeButtons = document.querySelectorAll(".card__like-button");
+cardLikeButtons.forEach((likeButton) => {
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+});
+*/
