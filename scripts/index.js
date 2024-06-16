@@ -125,7 +125,6 @@ function getCardElement(cardData) {
     previewModalCaptionEl.textContent = cardData.name;
     openModal(previewImageModal);
   });
-  //openModal with previewImageModal (find this element up at the top with the other variables)
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
