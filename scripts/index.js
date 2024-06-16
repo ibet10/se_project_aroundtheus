@@ -49,7 +49,9 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const addCardModal = document.querySelector("#add-card-modal");
 const addNewCardModalButton = document.querySelector(".profile__add-button");
-const addCardModalCloseButton = document.querySelector("#modal-button-close");
+const addCardModalCloseButton = document.querySelector(
+  "#add-card-modal-button-close"
+);
 
 //Functions
 
