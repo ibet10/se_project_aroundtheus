@@ -121,6 +121,7 @@ function handleAddCardModalSubmit(e) {
     link,
   });
   cardListEl.prepend(cardElement);
+  e.target.reset();
   closeModal(addCardModal);
 }
 
