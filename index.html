@@ -132,7 +132,7 @@
             class="modal__close"
             type="button"
             aria-label="close button"
-            id="add-card-modal-button-close"
+            id="preview-image-modal-button-close"
           ></button>
           <img class="modal__preview-image" src="" alt=""/>
           <p class="modal__caption"></p>
@@ -142,6 +142,9 @@
       <!-- Card Template -->
       <template id="card-template">
         <li class="card">
+          <button class="button button__card_trash_bin" type="button"
+          aria-label="delete button"
+          id="card-trash-bin-button"></button>
           <img class="card__image" src="" alt="" />
           <div class="card__description">
             <h2 class="card__title"></h2>

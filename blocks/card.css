@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   list-style: none;
+  position: relative;
 }
 
 .card__image {
@@ -9,6 +10,8 @@
   width: 282px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  transition: 0.2s, ease-in;
+  cursor: pointer;
 }
 
 .card__description {
@@ -46,6 +49,24 @@
 }
 
 .card__like-button:hover {
+  opacity: 50%;
+  transition: 0.2s, ease-in;
+  cursor: pointer;
+}
+
+.button__card_trash_bin {
+  position: absolute;
+  background: transparent url(../images/trash-bin.svg) center no-repeat;
+  margin: auto;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  height: 19px;
+  width: 18px;
+  z-index: 1;
+}
+
+.button__card_trash_bin:hover {
   opacity: 50%;
   transition: 0.2s, ease-in;
   cursor: pointer;
