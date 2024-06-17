@@ -63,6 +63,8 @@
   border: none;
   height: 19px;
   width: 18px;
+  top: 18px;
+  right: 15px;
   z-index: 1;
 }
 
