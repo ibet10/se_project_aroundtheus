@@ -42,8 +42,7 @@ const profileModalTitleInput =
 const profileModalDescriptionInput = profileEditModalPopup.querySelector(
   "#modal-description-input"
 );
-const profileEditModalForm =
-  profileEditModalPopup.querySelector(".modal__form");
+const profileEditModalForm = document.forms["profile-form"];
 
 //
 // Card Template Elements
@@ -62,7 +61,7 @@ const addNewCardModalButton = document.querySelector(".profile__add-button");
 const addCardModalCloseButton = document.querySelector(
   "#add-card-modal-button-close "
 );
-const addCardModalForm = addCardModal.querySelector(".modal__form");
+const addCardModalForm = document.forms["add-card-form"];
 const addCardTitleInput = addCardModalForm.querySelector(
   ".modal__input_type_title"
 );
@@ -83,6 +82,12 @@ const previewModalCaptionEl =
 const previewImageModalCloseButton = previewImageModal.querySelector(
   "#preview-image-modal-button-close"
 );
+
+//
+// Modal Buttons Elements
+//
+
+const modalCloseButtons = document.querySelectorAll(".modal__close");
 
 //
 //Functions
@@ -138,6 +143,7 @@ function getCardElement(cardData) {
 
   cardImageEl.addEventListener("click", () => {
     previewModalImageEl.src = cardData.link;
+    previewModalImageEl.alt = cardData.name;
     previewModalCaptionEl.textContent = cardData.name;
     openModal(previewImageModal);
   });
@@ -158,6 +164,7 @@ function getCardElement(cardData) {
 //
 
 profileEditModalForm.addEventListener("submit", handleProfileModalSubmit);
+
 addCardModalForm.addEventListener("submit", handleAddCardModalSubmit);
 
 profileEditButton.addEventListener("click", () => {
@@ -166,17 +173,11 @@ profileEditButton.addEventListener("click", () => {
   openModal(profileEditModalPopup);
 });
 
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModalPopup)
-);
-
 addNewCardModalButton.addEventListener("click", () => openModal(addCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addCardModal)
-);
 
-previewImageModalCloseButton.addEventListener("click", () =>
-  closeModal(previewImageModal)
-);
+modalCloseButtons.forEach((button) => {
+  const modal = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(modal));
+});
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
