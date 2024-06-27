@@ -7,12 +7,24 @@ const configItems = {
   errorClass: "modal__error_visible",
 };
 
+function setEventListerners(formElement, optionInputs) {
+  const { inputSelector } = optionInputs;
+  const inputElements = [...formElement.querySelectorAll(inputSelector)];
+  // console.log(inputElements);
+  inputElements.forEach((inputElement) => {
+    inputElement.addEventListener("input", (e) => {
+      console.log(inputElement.validationMessage);
+    });
+  });
+}
+
 function enableValidation(optionInputs) {
   const formElements = [...document.querySelectorAll(configItems.formSelector)];
   formElements.forEach((formElement) => {
     formElement.addEventListener("submit", (e) => {
       e.preventDefault();
     });
+    setEventListerners(formElement, optionInputs);
     //console.log(formElements);
   });
 }
