@@ -72,13 +72,22 @@
             maxlength="40"
             required
           />
+
+          <span class="modal__error" id="edit-modal-title-error"></span>
+          
           <input
             class="modal__input"
             type="text"
             name="description"
             placeholder="Description"
             id="modal-description-input"
+            minlength="2"
+            maxlength="200"
+            required
           />
+
+          <span class="modal__error" id="edit-modal-description-error"></span>
+
           <button
             class="button modal__button"
             type="submit"
@@ -109,13 +118,20 @@
               placeholder="Title"
               id="modal-title-input-card"
             />
+
+            <span class="modal__error" id="card--modal-title-error"></span>
+
             <input
               class="modal__input modal__input_type_url"
-              type="text"
+              type="url"
               name="url"
               placeholder="Image link"
               id="modal-url-input-card"
+              required
             />
+
+            <span class="modal__error" id="card-modal-url-error"></span>
+
             <button
               class="button modal__button"
               type="submit"

@@ -81,6 +81,12 @@
   margin-bottom: 30px;
 }
 
+.modal__input_type_error {
+}
+
+.modal__error_visible {
+}
+
 .modal__button {
   cursor: pointer;
   background: #000;
@@ -98,6 +104,9 @@
 .modal__button:hover {
   opacity: 80%;
   transition: 0.2s, ease-in;
+}
+
+.modal__button_disabled {
 }
 
 .modal__container_type_image {
