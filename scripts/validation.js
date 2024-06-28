@@ -31,7 +31,7 @@ function hideInputError(
   errorMessageEl.classList.remove(errorClass);
 }
 
-//ADD FEATURE FOR CLICKING OFF MODAL AND USING Esc KEY TO ENTER MODAL DATA
+//ADD FEATURE FOR USING Esc KEY and CLICKING OFF MODAL
 
 function checkInputValidity(formElement, inputElement, optionInputs) {
   if (!inputElement.validity.valid) {
