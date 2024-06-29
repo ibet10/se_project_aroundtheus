@@ -181,3 +181,5 @@ modalCloseButtons.forEach((button) => {
 });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+
+//ADD FEATURE FOR USING Esc KEY and CLICKING OFF MODAL

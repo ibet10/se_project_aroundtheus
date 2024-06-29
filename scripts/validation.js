@@ -7,7 +7,6 @@ const configItems = {
   errorClass: "modal__error_visible",
 };
 
-//Add the inputs errors from the Card form
 function showInputError(
   formElement,
   inputElement,
@@ -19,7 +18,6 @@ function showInputError(
   errorMessageEl.classList.add(errorClass);
 }
 
-//Hide the input errors from the Card form
 function hideInputError(
   formElement,
   inputElement,
@@ -31,23 +29,45 @@ function hideInputError(
   errorMessageEl.classList.remove(errorClass);
 }
 
-//ADD FEATURE FOR USING Esc KEY and CLICKING OFF MODAL
-
 function checkInputValidity(formElement, inputElement, optionInputs) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, optionInputs);
-  } else {
-    hideInputError(formElement, inputElement, optionInputs);
+    return showInputError(formElement, inputElement, optionInputs);
   }
+
+  hideInputError(formElement, inputElement, optionInputs);
+}
+
+function toggleButtonState(
+  inputElements,
+  submitButton,
+  { inactiveButtonClass }
+) {
+  let foundInvalid = false;
+
+  inputElements.forEach((inputElement) => {
+    if (!inputElement.validity.valid) {
+      foundInvalid = true;
+    }
+  });
+
+  if (foundInvalid) {
+    submitButton.classList.add(inactiveButtonClass);
+    return (submitButton.disabled = true);
+  }
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.disabled = false;
 }
 
 function setEventListerners(formElement, optionInputs) {
   const { inputSelector } = optionInputs;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
-  // console.log(inputElements);
+  const submitButton = formElement.querySelector(".modal__button");
+  //console.log(submitButton);
+
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
       checkInputValidity(formElement, inputElement, optionInputs);
+      toggleButtonState(inputElements, submitButton, optionInputs);
     });
   });
 }

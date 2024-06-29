@@ -117,8 +117,11 @@
               name="title"
               placeholder="Title"
               id="modal-title-input-card"
+              minlength="2"
+              maxlength="200"
+              required
             />
-<!--Add to span?: Please fill out this field.-->
+           
             <span class="modal__error" id="modal-title-input-card-error"></span>
 
             <input
@@ -129,14 +132,15 @@
               id="modal-url-input-card"
               required
             />
-<!--Add to span?: Please enter a web address.-->
+            
             <span class="modal__error" id="modal-url-input-card-error"></span>
 
             <button
-              class="button modal__button"
+              class="button modal__button modal__button_disabled"
               type="submit"
               aria-label="create button"
               id="modal-button-create"
+              disabled
             >
               Create
             </button>

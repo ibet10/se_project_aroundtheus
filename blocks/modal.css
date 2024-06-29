@@ -121,7 +121,11 @@
 }
 
 .modal__button_disabled {
+  background: #000;
   color: #fff;
+  opacity: 15%;
+  border-radius: 2px;
+  border-color: #000;
 }
 
 .modal__container_type_image {
