@@ -37,23 +37,21 @@ function checkInputValidity(formElement, inputElement, optionInputs) {
   hideInputError(formElement, inputElement, optionInputs);
 }
 
+function hasInvalidInput(inputList) {
+  return !inputList.every((inputElement) => inputElement.validity.valid);
+}
+
 function toggleButtonState(
   inputElements,
   submitButton,
   { inactiveButtonClass }
 ) {
-  let foundInvalid = false;
-
-  inputElements.forEach((inputElement) => {
-    if (!inputElement.validity.valid) {
-      foundInvalid = true;
-    }
-  });
-
-  if (foundInvalid) {
+  if (hasInvalidInput(inputElements)) {
     submitButton.classList.add(inactiveButtonClass);
-    return (submitButton.disabled = true);
+    submitButton.disabled = true;
+    return;
   }
+
   submitButton.classList.remove(inactiveButtonClass);
   submitButton.disabled = false;
 }
@@ -62,7 +60,6 @@ function setEventListerners(formElement, optionInputs) {
   const { inputSelector } = optionInputs;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
   const submitButton = formElement.querySelector(".modal__button");
-  //console.log(submitButton);
 
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
@@ -74,12 +71,12 @@ function setEventListerners(formElement, optionInputs) {
 
 function enableValidation(optionInputs) {
   const formElements = [...document.querySelectorAll(configItems.formSelector)];
+
   formElements.forEach((formElement) => {
     formElement.addEventListener("submit", (e) => {
       e.preventDefault();
     });
     setEventListerners(formElement, optionInputs);
-    //console.log(formElements);
   });
 }
 

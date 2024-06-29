@@ -90,15 +90,39 @@ const previewImageModalCloseButton = previewImageModal.querySelector(
 const modalCloseButtons = document.querySelectorAll(".modal__close");
 
 //
+//Closing Modal by ESC key and Overlay Feature
+//
+
+const allModals = [profileEditModalPopup, addCardModal, previewImageModal];
+allModals.forEach((modal) => {
+  modal.addEventListener("click", closeModalByClickingOverlay);
+});
+
+function closeModalByPressingESCKey(e) {
+  if (e.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    return closeModal(modal);
+  }
+}
+
+function closeModalByClickingOverlay(e) {
+  if (e.target.classList.contains("modal")) {
+    closeModal(e.target);
+  }
+}
+
+//
 //Functions
 //
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  //document.addEventListener("keydown", closeModalByPressingESCKey);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalByPressingESCKey);
 }
 
 function renderCard(cardData, wrapper) {
@@ -181,5 +205,3 @@ modalCloseButtons.forEach((button) => {
 });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
-//ADD FEATURE FOR USING Esc KEY and CLICKING OFF MODAL
