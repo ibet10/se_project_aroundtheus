@@ -84,7 +84,7 @@
   width: 100%;
 }
 
-.modal__texbox {
+.modal__label {
   position: relative;
   width: 100%;
 }
@@ -99,8 +99,8 @@
   line-height: 14px;
   overflow: hidden;
   padding: 0;
-  margin-top: 5px;
-  top: 10px;
+  margin: 5px 0;
+  top: 35px;
 }
 
 .modal__input_type_error {
@@ -191,7 +191,7 @@
   }
 
   .modal__button {
-    margin: 45px 0 0 0;
+    margin: 16px 0 0 0;
     padding: 14px 100px;
     font-size: 14px;
     line-height: 17px;
