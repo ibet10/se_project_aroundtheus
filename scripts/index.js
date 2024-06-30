@@ -117,7 +117,7 @@ function closeModalByClickingOverlay(e) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  //document.addEventListener("keydown", closeModalByPressingESCKey);
+  document.addEventListener("keydown", closeModalByPressingESCKey);
 }
 
 function openModal(modal) {
@@ -145,11 +145,16 @@ function handleAddCardModalSubmit(e) {
   e.preventDefault();
   const name = addCardTitleInput.value;
   const link = addCardUrlInput.value;
+
+  renderCard({ name, link }, cardListEl);
+  /*
   const cardElement = getCardElement({
     name,
     link,
   });
   cardListEl.prepend(cardElement);
+*/
+
   e.target.reset();
   closeModal(addCardModal);
 }
