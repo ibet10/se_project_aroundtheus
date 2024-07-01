@@ -181,7 +181,7 @@
 
   .modal__title {
     min-width: 238px;
-    size: 18px;
+    font-size: 18px;
     line-height: 21px;
     margin: 0 0 75px 0;
   }

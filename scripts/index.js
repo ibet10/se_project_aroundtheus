@@ -118,7 +118,7 @@ function closeModalByClickingOverlay(e) {
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalByPressingESCKey);
-}
+} //Thank you for reviewing; I was overthinking and ended up overlooking.
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
