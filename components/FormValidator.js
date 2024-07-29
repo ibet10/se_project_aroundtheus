@@ -33,5 +33,3 @@ Create an instance of the FormValidator class for each form that should be valid
 class FormValidator {
   constructor(settings, formElement) {}
 }
-
-//export default FormValidator;
