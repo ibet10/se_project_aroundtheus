@@ -31,5 +31,14 @@ Create an instance of the FormValidator class for each form that should be valid
  */
 
 class FormValidator {
-  constructor(settings, formElement) {}
+  constructor(settings, formElement) {
+    /*1. Its constructor has two parameters: 
+    a. The first parameter is a settings object that stores selectors and form classes, 
+    b. and the second one takes a form element to be validated.
+
+2. It has private methods for processing the form, which include: 
+    a. checking the field's validity, 
+    b. changing the state of the Submit button, and
+    c. adding all the needed handlers. */
+  }
 }

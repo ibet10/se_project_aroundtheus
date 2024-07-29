@@ -30,7 +30,7 @@ export default class Card {
       });
   }
 
-  //2. private method for the delete and like button handlers
+  //2. private methods for the delete and like button handlers
   _handleLikeButton() {
     this._cardElement
       .querySelector(".card__like-button")
