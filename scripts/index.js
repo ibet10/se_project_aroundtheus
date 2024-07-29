@@ -1,3 +1,20 @@
+import Card from "../components/Card.js";
+/*
+FILE PATH MAY NEED CORRECTION:
+
+import FormValidator from "../components.FormValidator.js"
+
+from validation.js:
+const configItems = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+*/
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -49,8 +66,8 @@ const profileEditModalForm = document.forms["profile-form"];
 //
 
 const cardListEl = document.querySelector(".cards__list");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+/*const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;*/
 
 //
 // Add Card Modal Elements
@@ -124,10 +141,14 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalByPressingESCKey);
 }
-
+/*                              */
+/* CARD CLASS FUNCTION REFACTOR */
+/*                              */
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  //const cardElement = getCardElement(cardData);
+  wrapper.prepend(card.getView());
+  //wrapper.prepend(cardElement);
 }
 
 //
@@ -147,29 +168,36 @@ function handleAddCardModalSubmit(e) {
   const link = addCardUrlInput.value;
 
   renderCard({ name, link }, cardListEl);
-  /*
-  const cardElement = getCardElement({
-    name,
-    link,
-  });
-  cardListEl.prepend(cardElement);
-*/
 
   e.target.reset();
   closeModal(addCardModal);
 }
 
+const handleImageClick = () => {
+  previewModalImageEl.src = link;
+  previewModalImageEl.alt = name;
+  previewModalCaptionEl.textContent = cardData.name;
+  openModal(previewImageModal);
+};
+
+/*                              */
+/*          CARD FUNCTION       */
+/*                              */
+
+/*
 function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const cardDeleteButton = cardElement.querySelector("#card-trash-bin-button");
+  const cardElement = cardTemplate.cloneNode(true); 
+  const cardTitleEl = cardElement.querySelector(".card__title"); 
+  const cardImageEl = cardElement.querySelector(".card__image"); 
+  const likeButton = cardElement.querySelector(".card__like-button"); 
+  const cardDeleteButton = cardElement.querySelector("#card-trash-bin-button"); 
+
 
   cardDeleteButton.addEventListener("click", () => {
     cardElement.remove();
   });
 
+ 
   cardImageEl.addEventListener("click", () => {
     previewModalImageEl.src = cardData.link;
     previewModalImageEl.alt = cardData.name;
@@ -177,9 +205,11 @@ function getCardElement(cardData) {
     openModal(previewImageModal);
   });
 
+
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
+
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
@@ -187,6 +217,7 @@ function getCardElement(cardData) {
 
   return cardElement;
 }
+  */
 
 //
 //Event Listeners

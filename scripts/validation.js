@@ -81,3 +81,9 @@ function enableValidation(options) {
 }
 
 enableValidation(configItems);
+
+//
+//
+//THIS FILE WILL BE DELETED
+//
+//
