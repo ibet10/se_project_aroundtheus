@@ -35,14 +35,8 @@ const initialCards = [
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModalPopup = document.querySelector("#profile-edit-modal");
-
-const profileModalCloseButton = profileEditModalPopup.querySelector(
-  "#modal-button-close"
-); //remove profileModalCloseButton?
-
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
-
 const profileModalTitleInput =
   profileEditModalPopup.querySelector("#modal-title-input");
 const profileModalDescriptionInput = profileEditModalPopup.querySelector(
@@ -62,11 +56,6 @@ const cardListEl = document.querySelector(".cards__list");
 
 const addCardModal = document.querySelector("#add-card-modal");
 const addNewCardModalButton = document.querySelector(".profile__add-button");
-
-const addCardModalCloseButton = document.querySelector(
-  "#add-card-modal-button-close "
-); //remove addCardModalCloseButton?
-
 const addCardModalForm = document.forms["add-card-form"];
 const addCardTitleInput = addCardModalForm.querySelector(
   ".modal__input_type_title"
@@ -85,9 +74,6 @@ const previewModalImageEl = previewImageModal.querySelector(
 );
 const previewModalCaptionEl =
   previewImageModal.querySelector(".modal__caption");
-const previewImageModalCloseButton = previewImageModal.querySelector(
-  "#preview-image-modal-button-close"
-); // remove previewImageModalCloseButton?
 
 //
 // Modal Buttons Elements
