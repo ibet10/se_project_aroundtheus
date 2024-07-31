@@ -1,10 +1,10 @@
 export default class FormValidator {
   //1. Constructor has two parameters:
   constructor(configItems, formElement) {
-    this._inputSelector = configItems._inputSelector;
-    this._submitButtonSelector = configItems._submitButtonSelector;
-    this._inactiveButtonClass = configItems._inactiveButtonClass;
-    this._inputErrorClass = configItems._inputErrorClass;
+    this._inputSelector = configItems.inputSelector;
+    this._submitButtonSelector = configItems.submitButtonSelector;
+    this._inactiveButtonClass = configItems.inactiveButtonClass;
+    this._inputErrorClass = configItems.inputErrorClass;
     this._errorClass = configItems.errorClass;
 
     this._form = formElement;
