@@ -1,19 +1,6 @@
 import Card from "../components/Card.js";
-/*
-FILE PATH MAY NEED CORRECTION:
 
-import FormValidator from "../components.FormValidator.js"
-
-from validation.js:
-const configItems = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-*/
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -131,6 +118,27 @@ function closeModalByClickingOverlay(e) {
 }
 
 //
+// Form Validation
+//
+
+const configItems = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const profileEditFormValidator = new FormValidator(
+  configItems,
+  profileEditModalForm
+);
+profileEditFormValidator.enableValidation();
+
+const addCardFormValidator = new FormValidator(configItems, addCardModalForm);
+addCardFormValidator.enableValidation();
+
+//
 //Functions
 //
 
@@ -146,9 +154,7 @@ function openModal(modal) {
 
 function renderCard(cardData, wrapper) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  //const cardElement = getCardElement(cardData);
   wrapper.prepend(card.getView());
-  //wrapper.prepend(cardElement);
 }
 
 //

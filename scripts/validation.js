@@ -1,5 +1,6 @@
+// configItems moved to index.js
 const configItems = {
-  formSelector: ".modal__form",
+  formSelector: ".modal__form", //do not need this because passed it directly as formElement
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
@@ -7,6 +8,9 @@ const configItems = {
   errorClass: "modal__error_visible",
 };
 
+//
+//refactoring in FormValidator.js
+//
 function showInputError(
   formElement,
   inputElement,
@@ -18,6 +22,9 @@ function showInputError(
   errorMessageEl.classList.add(errorClass);
 }
 
+//
+//refactoring in FormValidator.js
+//
 function hideInputError(
   formElement,
   inputElement,
@@ -41,6 +48,9 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputElement) => inputElement.validity.valid);
 }
 
+//
+//refactoring in FormValidator.js
+//
 function toggleButtonState(
   inputElements,
   submitButton,
@@ -56,10 +66,13 @@ function toggleButtonState(
   submitButton.disabled = false;
 }
 
+//
+//IN FormValidator AS _setEventListeners()
+//
 function setEventListerners(formElement, options) {
   const { inputSelector, submitButtonSelector } = options;
-  const inputElements = [...formElement.querySelectorAll(inputSelector)];
-  const submitButton = formElement.querySelector(submitButtonSelector);
+  const inputElements = [...formElement.querySelectorAll(inputSelector)]; //in constructor
+  const submitButton = formElement.querySelector(submitButtonSelector); //in constructor
 
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (e) => {
@@ -69,6 +82,9 @@ function setEventListerners(formElement, options) {
   });
 }
 
+//
+//IN FormValidator AS enableValidation()
+//
 function enableValidation(options) {
   const formElements = [...document.querySelectorAll(options.formSelector)];
 
