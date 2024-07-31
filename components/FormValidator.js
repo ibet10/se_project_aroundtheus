@@ -12,7 +12,16 @@ export default class FormValidator {
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
 
-    this._submitButton = this._form.querySelector(this._submitButtonSelector);
+    console.log("Form:", this._form);
+    console.log("Submit Button:", this._submitButton);
+    console.log("Input Elements:", this._inputElements);
+
+    if (!this._submitButton) {
+      console.error(
+        "Submit button not found with selector:",
+        this._submitButtonSelector
+      );
+    }
   }
   // 2. Private methods for processing the form:
   _showInputError(inputElement) {
