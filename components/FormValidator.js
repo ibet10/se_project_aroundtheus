@@ -1,5 +1,5 @@
 export default class FormValidator {
-  //1. Its constructor has two parameters:
+  //1. Constructor has two parameters:
   constructor(configItems, formElement) {
     this._inputSelector = configItems._inputSelector;
     this._submitButtonSelector = configItems._submitButtonSelector;
@@ -12,7 +12,7 @@ export default class FormValidator {
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
   }
-  // 2. It has private methods for processing the form:
+  // 2. Private methods for processing the form:
   _showInputError(inputElement) {
     const errorMessageEl = this._form.querySelector(
       `#${inputElement.id}-error`
@@ -62,14 +62,14 @@ export default class FormValidator {
       });
     });
   }
-  // 3. It has a public method enableValidation(), which enables form validation:
+  // 3. Public method enableValidation(), which enables form validation:
   enableValidation() {
     this._form.addEventListener("submit", (e) => {
       e.preventDefault();
     });
     this._setEventListerners();
   }
-  // 4. It has a public method to either disable the state of the button or reset form validation (including the state of the submit button):
+  // 4. Public method to either disable the state of the button or reset form validation (including the state of the submit button):
   restValidation() {
     this._inputElements.forEach((inputElement) => {
       this._hideInputError(inputElement);

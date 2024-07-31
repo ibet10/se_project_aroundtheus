@@ -8,9 +8,6 @@ const configItems = {
   errorClass: "modal__error_visible",
 };
 
-//
-//refactoring in FormValidator.js
-//
 function showInputError(
   formElement,
   inputElement,
@@ -22,9 +19,6 @@ function showInputError(
   errorMessageEl.classList.add(errorClass);
 }
 
-//
-//refactoring in FormValidator.js
-//
 function hideInputError(
   formElement,
   inputElement,
@@ -48,9 +42,6 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputElement) => inputElement.validity.valid);
 }
 
-//
-//refactoring in FormValidator.js
-//
 function toggleButtonState(
   inputElements,
   submitButton,
@@ -66,9 +57,6 @@ function toggleButtonState(
   submitButton.disabled = false;
 }
 
-//
-//IN FormValidator AS _setEventListeners()
-//
 function setEventListerners(formElement, options) {
   const { inputSelector, submitButtonSelector } = options;
   const inputElements = [...formElement.querySelectorAll(inputSelector)]; //in constructor
@@ -82,9 +70,6 @@ function setEventListerners(formElement, options) {
   });
 }
 
-//
-//IN FormValidator AS enableValidation()
-//
 function enableValidation(options) {
   const formElements = [...document.querySelectorAll(options.formSelector)];
 
