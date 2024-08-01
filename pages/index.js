@@ -138,9 +138,13 @@ function openModal(modal) {
   document.addEventListener("keydown", closeModalByPressingESCKey);
 }
 
+function createCard(cardData) {
+  const cardElement = new Card(cardData, "#card-template", handleImageClick);
+  return cardElement.getView();
+}
+
 function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  wrapper.prepend(card.getView());
+  wrapper.prepend(createCard(cardData));
 }
 
 //
@@ -151,6 +155,9 @@ function handleProfileModalSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileModalTitleInput.value;
   profileDescription.textContent = profileModalDescriptionInput.value;
+
+  e.target.reset();
+  profileEditFormValidator._toggleButtonState();
   closeModal(profileEditModalPopup);
 }
 
@@ -162,6 +169,7 @@ function handleAddCardModalSubmit(e) {
   renderCard({ name, link }, cardListEl);
 
   e.target.reset();
+  addCardFormValidator._toggleButtonState();
   closeModal(addCardModal);
 }
 
