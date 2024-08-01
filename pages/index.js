@@ -115,6 +115,7 @@ const configItems = {
   errorClass: "modal__error_visible",
 };
 
+/*
 const profileEditFormValidator = new FormValidator(
   configItems,
   profileEditModalForm
@@ -123,6 +124,29 @@ profileEditFormValidator.enableValidation();
 
 const addCardFormValidator = new FormValidator(configItems, addCardModalForm);
 addCardFormValidator.enableValidation();
+*/
+
+const formValidators = {};
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(".modal__form"));
+
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+
+    const formName = formElement.getAttribute("name");
+
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(configItems);
+
+/*FOR REFERENCE OF USE:  
+formValidators["profile-edit-modal-form"].resetValidation();
+formValidators["add-card-modal-form"].resetValidation();
+*/
 
 //
 //Functions
@@ -157,7 +181,8 @@ function handleProfileModalSubmit(e) {
   profileDescription.textContent = profileModalDescriptionInput.value;
 
   e.target.reset();
-  profileEditFormValidator._toggleButtonState();
+  formValidators["profile-edit-modal-form"].resetValidation();
+
   closeModal(profileEditModalPopup);
 }
 
@@ -169,7 +194,8 @@ function handleAddCardModalSubmit(e) {
   renderCard({ name, link }, cardListEl);
 
   e.target.reset();
-  addCardFormValidator._toggleButtonState();
+  formValidators["add-card-modal-form"].resetValidation();
+
   closeModal(addCardModal);
 }
 
