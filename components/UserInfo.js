@@ -15,6 +15,25 @@ This class should:
 
 3. Have a public method named setUserInfo(), which takes new user data and adds it to the page. 
  a. this method should be used after successful submission of the profile form.
- 
-Create an instance of the UserInfo class in index.js and use its methods as described.
+
+(In index.js) Create an instance of the UserInfo class in index.js and use its methods as described.
 */
+export default class UserInfo {
+  constructor({ nameSelector, jobSelector }) {
+    this._nameElement = document.querySelector(nameSelector);
+    this._jobElement = document.querySelector(jobSelector);
+  }
+
+  //Public method getUserInfo()
+  getUserInfo() {
+    //returns object containing user info
+    return {
+      //object with name and job
+    };
+  }
+
+  //Public method setUserInfo()
+  setUserInfo({ name, job }) {
+    //use after successful submission of the profile form
+  }
+}

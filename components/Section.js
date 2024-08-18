@@ -8,7 +8,7 @@ Create it according to the following requirements.
 
 1. The first parameter of its constructor should be an object with two properties (items and renderer).
   a. the items property should be an array of data, which you must add to the page when it loads.
-  b.the renderer property should be a function that creates and adds a single item to the page.
+  b. the renderer property should be a function that creates and adds a single item to the page.
 
 2. Its second constructor parameter should be a CSS class selector where you'll add the card elements (selector?).
 
@@ -18,3 +18,23 @@ Create it according to the following requirements.
 
 4. It has a public method named addItem() that takes a DOM element and adds it to the container.
  a. this method should be called when adding an individual card to the DOM. */
+
+export default class Section {
+  constructor({ items, renderer }, selector) {
+    this._items = items;
+    this._renderer = renderer;
+    this._container = document.querySelector(selector);
+  }
+
+  //Public method renderItems()
+  renderItems() {
+    this._items.forEach((item) => {
+      this.renderer(item);
+    });
+  }
+
+  //Public method addItem()
+  addItem(element) {
+    this._container.prepend(element);
+  }
+}

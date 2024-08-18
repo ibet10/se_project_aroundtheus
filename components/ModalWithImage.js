@@ -2,7 +2,7 @@
 //export to index.js
 
 /*
-The (Modal)PopupWithImage class should be a child class of (Modal)Popup. 
+The (Modal)PopupWithImage class should be a child class of (Modal)Popup (extends). 
 
 This class will need to override the parent’s open() method. 
 The open() method of the (Modal)PopupWithImage class will need:
@@ -20,5 +20,16 @@ open(data) {
    super.open();
  }
 
- Create one instance of this class in index.js and call its parent’s setEventListeners() method.
+(In index.js) Create one instance of this class in index.js and call its parent’s setEventListeners() method.
 */
+
+//IMPORT THE MODAL CLASS
+export default class ModalWithImage extends Modal {
+  constructor() {}
+
+  open({ name, link }) {
+    // set the image's src and alt
+    // set the caption's textContent
+    super.open();
+  }
+}
