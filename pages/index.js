@@ -1,7 +1,12 @@
 import Card from "../components/Card.js";
 
 import FormValidator from "../components/FormValidator.js";
-
+/*
+IMPORT THE OTHER CLASSES AND INSTANTIATE THEM
+*/
+//
+//
+//wILL NEED TO MOVE TO: constants.js file
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -106,7 +111,9 @@ function closeModalByClickingOverlay(e) {
 //
 // Form Validation
 //
-
+//
+//
+//wILL NEED TO MOVE TO: constants.js file
 const configItems = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
