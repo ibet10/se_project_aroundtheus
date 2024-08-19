@@ -4,6 +4,7 @@ import FormValidator from "../components/FormValidator.js";
 /*
 IMPORT THE OTHER CLASSES AND INSTANTIATE THEM
 */
+
 //
 //
 //wILL NEED TO MOVE TO: constants.js file
@@ -95,6 +96,7 @@ allModals.forEach((modal) => {
   modal.addEventListener("click", closeModalByClickingOverlay);
 });
 
+/* refactor with Modal class */
 function closeModalByPressingESCKey(e) {
   if (e.key === "Escape") {
     const modal = document.querySelector(".modal_opened");
@@ -102,17 +104,13 @@ function closeModalByPressingESCKey(e) {
   }
 }
 
+/* refactor with Modal class */
 function closeModalByClickingOverlay(e) {
   if (e.target.classList.contains("modal")) {
     closeModal(e.target);
   }
 }
 
-//
-// Form Validation
-//
-//
-//
 //wILL NEED TO MOVE TO: constants.js file
 const configItems = {
   inputSelector: ".modal__input",
@@ -122,17 +120,9 @@ const configItems = {
   errorClass: "modal__error_visible",
 };
 
-/*
-const profileEditFormValidator = new FormValidator(
-  configItems,
-  profileEditModalForm
-);
-profileEditFormValidator.enableValidation();
-
-const addCardFormValidator = new FormValidator(configItems, addCardModalForm);
-addCardFormValidator.enableValidation();
-*/
-
+//
+// Form Validation
+//
 const formValidators = {};
 
 const enableValidation = (config) => {
@@ -150,20 +140,17 @@ const enableValidation = (config) => {
 
 enableValidation(configItems);
 
-/*FOR REFERENCE OF USE:  
-formValidators["profile-edit-modal-form"].resetValidation();
-formValidators["add-card-modal-form"].resetValidation();
-*/
-
 //
 //Functions
 //
 
+/* refactor with Modal class */
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalByPressingESCKey);
 }
 
+/* refactor with Modal class */
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalByPressingESCKey);
@@ -174,6 +161,7 @@ function createCard(cardData) {
   return cardElement.getView();
 }
 
+/* will be replaced by Section */
 function renderCard(cardData, wrapper) {
   wrapper.prepend(createCard(cardData));
 }

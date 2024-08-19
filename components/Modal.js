@@ -21,24 +21,66 @@ You won’t instantiate your Popup class directly in index.js; instead, you’ll
 export default class Modal {
   constructor(modalSelector) {
     //popupSelector
+    this.modalElement = document.querySelector(modalSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
   }
 
-  //Public method open()
+  //Public method open() & call into preexisting evenhandlers in index.js
   open() {
-    //call into preexisting evenhandlers in index.js
+    this.modalElement.classList.add("modal_opened");
+    document.addEventListener("keydown", this._handleEscClose);
   }
+  /*
+  function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalByPressingESCKey);
+} 
+  */
 
   //Public method close()
-  close() {}
+  close() {
+    this.modalElement.classList.remove("modal_opened");
+    document.removeEventListener("keydown", this._handleEscClose);
+  }
+  /* 
+    function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalByPressingESCKey);
+}
+  */
 
   //Private method _handleEscClose()
-  _handleEscClose() {
+  _handleEscClose(e) {
     //store logic for closing the modal by pressing Esc key
+
+    if (e.key === "Escape") {
+      this.close();
+    }
   }
+  /*
+  function closeModalByPressingESCKey(e) {
+    if (e.key === "Escape") {
+      const modal = document.querySelector(".modal_opened");
+      return closeModal(modal);
+  }
+     */
 
   //Public method setEventListeners()
   setEventListeners() {
-    //adds click event listener to the close icon of the modal (const modalCloseButtons = document.querySelectorAll(".modal__close"); OR just html ".modal__close")
+    //adds click event listener to the close icon of the modal (".modal__close")
+    this.modalElement
+      .querySelector(".modal__close")
+      .addEventListener("click", () => this.close());
     //also close when shaded area around the form is clicked (the ".modal_opened" class in CSS)
+    this.modalElement.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal")) {
+        this.close();
+      }
+    });
   }
+  /*function closeModalByClickingOverlay(e) {
+  if (e.target.classList.contains("modal")) {
+    closeModal(e.target);
+  }
+} */
 }

@@ -18,10 +18,15 @@ The PopupWithForm should be a child of Popup (extends), and it should comply wit
 
 */
 
-//IMPORT THE MODAL CLASS
+import Modal from "./Modal.js";
+
 export default class ModalWithForm extends Modal {
-  //two arguments: the modal selector and a callback function
-  constructor() {}
+  //Two arguments: the modal selector and a callback function
+  constructor(modalSelector, handleFormSubmit) {
+    super(modalSelector);
+    this.modalForm = this.modalElement.querySelector(".modal__form");
+    this._handleFormSubmit = handleFormSubmit;
+  }
 
   //Private method _getInputValues()
   _getInputValues() {
