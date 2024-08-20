@@ -170,6 +170,7 @@ function renderCard(cardData, wrapper) {
 //Event Handlers
 //
 
+/* refactor with ModalWithForm class */
 function handleProfileModalSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileModalTitleInput.value;
@@ -181,6 +182,7 @@ function handleProfileModalSubmit(e) {
   closeModal(profileEditModalPopup);
 }
 
+/* refactor with ModalWithForm class */
 function handleAddCardModalSubmit(e) {
   e.preventDefault();
   const name = addCardTitleInput.value;
@@ -194,6 +196,7 @@ function handleAddCardModalSubmit(e) {
   closeModal(addCardModal);
 }
 
+/* refactor with ModalWithImage class */
 const handleImageClick = (name, link) => {
   previewModalImageEl.src = link;
   previewModalImageEl.alt = name;
