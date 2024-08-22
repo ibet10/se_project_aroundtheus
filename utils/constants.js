@@ -1,6 +1,4 @@
-//need to export to index.js
-
-const configItems = {
+export const configItems = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
@@ -8,7 +6,7 @@ const configItems = {
   errorClass: "modal__error_visible",
 };
 
-const initialCards = [
+export const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",

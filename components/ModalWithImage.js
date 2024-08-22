@@ -1,10 +1,3 @@
-//export to index.js
-
-/*
-(In index.js) Create one instance of this class in index.js 
-and call its parent’s setEventListeners() method.
-*/
-
 import Modal from "./Modal.js";
 
 export default class ModalWithImage extends Modal {

@@ -1,9 +1,7 @@
-//export to index.js
-
 export default class UserInfo {
-  constructor({ nameSelector, jobSelector }) {
-    this._nameElement = document.querySelector(nameSelector);
-    this._jobElement = document.querySelector(jobSelector);
+  constructor({ titleSelector, descriptionSelector }) {
+    this._titleElement = document.querySelector(titleSelector);
+    this._descriptionElement = document.querySelector(descriptionSelector);
   }
 
   //Public method getUserInfo()
@@ -11,15 +9,15 @@ export default class UserInfo {
     //returns object containing user info
     return {
       //object with name and job
-      name: this._nameElement.textContent,
-      job: this._jobElement.textContent,
+      title: this._titleElement.textContent,
+      description: this._descriptionElement.textContent,
     };
   }
 
   //Public method setUserInfo()
-  setUserInfo({ name, job }) {
+  setUserInfo({ title, description }) {
     //use after successful submission of the profile form
-    this._nameElement.textContent = name;
-    this._jobElement.textContent = job;
+    this._titleElement.textContent = title;
+    this._descriptionElement.textContent = description;
   }
 }

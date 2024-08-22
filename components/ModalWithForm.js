@@ -1,8 +1,3 @@
-//export to index.js
-/*
-(In index.js) Create an instance of the PopupWithForm class for
-each popup that contains a form, and call their setEventListeners() method. 
-*/
 import Modal from "./Modal.js";
 
 export default class ModalWithForm extends Modal {
