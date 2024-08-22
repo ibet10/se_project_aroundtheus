@@ -156,13 +156,16 @@ const handleImageClick = (name, link) => {
 // Event Listeners
 //
 addNewCardModalButton.addEventListener("click", () => {
+  formValidators["add-card-modal-form"].resetValidation();
   addCardModal.open();
 });
 
 profileEditButton.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
-  profileModalTitleInput.value = userData.name;
-  profileModalDescriptionInput.value = userData.description;
+  profileModalTitleInput.value = userData.title || "";
+  profileModalDescriptionInput.value = userData.description || "";
+
+  formValidators["profile-edit-modal-form"].resetValidation();
   profileModal.open();
 });
 
