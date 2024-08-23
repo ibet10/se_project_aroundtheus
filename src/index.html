@@ -6,7 +6,7 @@
     <meta name="description" content="Around The U.S. Responsive Webpage" />
     <meta name="author" content="Ibet Raya" />
     <meta name="keywords" content="HTML, CSS" />
-   <!-- <link rel="stylesheet" href=".src/pages/index.css" />-->
+   
     <link rel="shortcut icon" href="favicon.ico" />
     <title>Around The U.S.</title>
   </head>
@@ -15,14 +15,14 @@
       <header class="header page__section">
         <img
           class="header__logo"
-          src="<%=require('.\images\logo.svg')%>"
+          src="<%=require('./images/logo.svg')%>"
           alt="Around the U.S. Logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau-min.jpg"
+            src="<%=require('./images/jacques-cousteau-min.jpg')%>"
             alt="Profile image of Jacques Cousteau"
             class="profile__image"
           />
@@ -185,6 +185,6 @@
       </template>
     </div>
     
-   <!-- <script src=".src/pages/index.js" type="module"></script>-->
+  
   </body>
 </html>
