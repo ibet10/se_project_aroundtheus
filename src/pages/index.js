@@ -53,12 +53,21 @@ const section = new Section(
   {
     items: initialCards,
     renderer: (cardData) => {
-      const card = new Card(cardData, "#card-template", handleImageClick);
-      section.addItem(card.getView());
+      const cardElement = createCard(cardData);
+      section.addItem(cardElement);
     },
   },
   ".cards__list"
 );
+
+//
+// Special Function: createCard
+//
+
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  return card.getView();
+}
 
 //
 // ModalWithForm Instantiation
@@ -109,8 +118,7 @@ function handleProfileModalSubmit(data) {
     title: data.title,
     description: data.description,
   });
-  profileEditModalForm.reset();
-  formValidators["profile-edit-modal-form"].resetValidation();
+
   profileModal.close();
 }
 
@@ -119,8 +127,9 @@ function handleAddCardModalSubmit() {
   const link = addCardUrlInput.value;
 
   const cardData = { name, link };
-  const cardElement = new Card(cardData, "#card-template", handleImageClick);
-  section.addItem(cardElement.getView());
+
+  const cardElement = createCard(cardData);
+  section.addItem(cardElement);
 
   addCardModalForm.reset();
   formValidators["add-card-modal-form"].resetValidation();
@@ -142,12 +151,13 @@ addNewCardModalButton.addEventListener("click", () => {
 });
 
 profileEditButton.addEventListener("click", () => {
+  formValidators["profile-edit-modal-form"].resetValidation();
+
   const userData = userInfo.getUserInfo();
+
   profileModalTitleInput.value = userData.title || "";
   profileModalDescriptionInput.value = userData.description || "";
 
-  profileEditModalForm.reset();
-  formValidators["profile-edit-modal-form"].resetValidation();
   profileModal.open();
 });
 
