@@ -74,7 +74,13 @@ export default class FormValidator {
     this._setEventListerners();
   }
 
-  // 4. Public method to either disable the state of the button or reset form validation (including the state of the submit button):
+  // 4. Public method for disabling the submit button
+  disableSubmitButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
+  }
+
+  // 5. Public method to either disable the state of the button or reset form validation (including the state of the submit button):
   resetValidation() {
     this._inputElements.forEach((inputElement) => {
       this._hideInputError(inputElement);

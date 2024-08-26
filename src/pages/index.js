@@ -132,7 +132,7 @@ function handleAddCardModalSubmit() {
   section.addItem(cardElement);
 
   addCardModalForm.reset();
-  formValidators["add-card-modal-form"].resetValidation();
+  formValidators["add-card-modal-form"].disableSubmitButton();
 
   addCardModal.close();
 }
