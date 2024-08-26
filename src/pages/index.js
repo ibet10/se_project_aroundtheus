@@ -122,10 +122,24 @@ function handleProfileModalSubmit(data) {
   profileModal.close();
 }
 
-function handleAddCardModalSubmit(/*formData*/) {
+function handleAddCardModalSubmit(data) {
+  const name = data.title;
+  const link = data.url;
+
+  const cardData = { name, link };
+
+  const cardElement = createCard(cardData);
+  section.addItem(cardElement);
+
+  addCardModalForm.reset();
+  formValidators["add-card-modal-form"].disableSubmitButton();
+
+  addCardModal.close();
+}
+/*
+function handleAddCardModalSubmit() {
   const name = addCardTitleInput.value;
   const link = addCardUrlInput.value;
-  /*const { name, link } = formData;*/
   const cardData = { name, link };
 
   //const cardData = addCardModal.getInputValues();
@@ -138,6 +152,7 @@ function handleAddCardModalSubmit(/*formData*/) {
 
   addCardModal.close();
 }
+  */
 
 const handleImageClick = (name, link) => {
   imagePreviewModal.open({ name, link });
@@ -147,10 +162,15 @@ const handleImageClick = (name, link) => {
 // Event Listeners
 //
 addNewCardModalButton.addEventListener("click", () => {
-  /*addCardModalForm.reset();
-  formValidators["add-card-modal-form"].resetValidation();*/
   addCardModal.open();
 });
+/*
+addNewCardModalButton.addEventListener("click", () => {
+  addCardModalForm.reset();
+  formValidators["add-card-modal-form"].resetValidation();
+  addCardModal.open();
+});
+*/
 
 profileEditButton.addEventListener("click", () => {
   formValidators["profile-edit-modal-form"].resetValidation();
