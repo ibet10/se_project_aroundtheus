@@ -19,14 +19,19 @@ export default class ModalWithForm extends Modal {
     return inputFields;
   }
 
+  /* Public method getInputValues()
+  getInputValues() {
+    return this._getInputValues();
+  }*/
+
   //Public method setEventListeners()
   setEventListeners() {
-    //call setEventListeners() method of the parent (Modal) class
-    super.setEventListeners();
     //add submit event listener to the form
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
       this._handleFormSubmit(this._getInputValues());
     });
+    //call setEventListeners() method of the parent (Modal) class
+    super.setEventListeners();
   }
 }

@@ -122,11 +122,13 @@ function handleProfileModalSubmit(data) {
   profileModal.close();
 }
 
-function handleAddCardModalSubmit() {
+function handleAddCardModalSubmit(/*formData*/) {
   const name = addCardTitleInput.value;
   const link = addCardUrlInput.value;
-
+  /*const { name, link } = formData;*/
   const cardData = { name, link };
+
+  //const cardData = addCardModal.getInputValues();
 
   const cardElement = createCard(cardData);
   section.addItem(cardElement);
