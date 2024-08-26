@@ -145,8 +145,8 @@ const handleImageClick = (name, link) => {
 // Event Listeners
 //
 addNewCardModalButton.addEventListener("click", () => {
-  addCardModalForm.reset();
-  formValidators["add-card-modal-form"].resetValidation();
+  /*addCardModalForm.reset();
+  formValidators["add-card-modal-form"].resetValidation();*/
   addCardModal.open();
 });
 
