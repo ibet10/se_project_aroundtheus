@@ -1,4 +1,5 @@
 export default class Card {
+  //add handleLikeCard
   constructor(cardData, cardSelector, handleImageClick) {
     this._name = cardData.name;
     this._link = cardData.link;

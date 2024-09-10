@@ -1,3 +1,5 @@
+//import Api from "../components/API.js";
+
 import Card from "../components/Card.js";
 
 import FormValidator from "../components/FormValidator.js";
@@ -13,6 +15,19 @@ import ModalWithImage from "../components/ModalWithImage.js";
 import { configItems, initialCards } from "../utils/constants.js";
 
 import "./index.css";
+
+//
+// API
+//
+/*
+const api = new Api ({
+baseUrl: "https://around-api.en.tripleten-services.com/v1",
+headers: {
+authorization: "5457953a-b073-4cb8-8a6a-6ab24a852af5",
+"Content-Type": "application/json,"
+},
+});
+*/
 
 //
 // Profile Modal Elements
