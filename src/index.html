@@ -194,7 +194,7 @@
             aria-label="close button"
             id="update-avatar-button-close"
           ></button>
-          <h3 class="modal__title" id="update-avatar-heading">Change profile picture</h3>
+          <h3 class="modal__title" id="update-avatar-title">Change profile picture</h3>
           <form class="modal__form" id="update-avatar-form" name="update-avatar-modal-form">
             
           <label for="modal-title-input-card" class="modal__label">
@@ -222,7 +222,28 @@
           </form>
   </div>
 </div>
-          <!-- Deletion Confirmation Modal -->
-  
+          <!-- Deletion Card Confirmation Modal -->
+  <div class="modal" id="delete-card-confirm-modal">
+    <div class="modal__container">
+      <button
+      class="modal__close"
+      type="button"
+      aria-label="close button"
+      id="delete-card-confirm-modal-button-close"
+    ></button>
+    <h3 class="modal__title" id="delete-card-confirm-title">Are you sure?</h3>
+    <form class="modal__form" id="delete-card-confirm-form" name="delete-card-confirm-modal-form">
+      <button
+        class="button modal__button modal__button_disabled"
+        type="submit"
+        aria-label="yes delete button"
+        id="delete-card-confirm-modal-button"
+        disabled
+      >
+        Yes
+      </button>
+    </form>
+  </div>
+</div>
   </body>
 </html>
