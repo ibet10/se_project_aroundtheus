@@ -185,6 +185,44 @@
       </template>
     </div>
     
+          <!-- Update Profile Avatar Modal -->
+<div class="modal" id="profile-avatar-modal">
+  <div class="modal__container">
+    <button
+            class="modal__close"
+            type="button"
+            aria-label="close button"
+            id="update-avatar-button-close"
+          ></button>
+          <h3 class="modal__title" id="update-avatar-heading">Change profile picture</h3>
+          <form class="modal__form" id="update-avatar-form" name="update-avatar-modal-form">
+            
+          <label for="modal-title-input-card" class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              type="url"
+              name="url"
+              placeholder="New Avatar Image URL"
+              id="modal-title-input-card"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+              <span class="modal__error" id="modal-avatar-image-input-error"></span>
+          </label>
+            <button
+              class="button modal__button modal__button_disabled"
+              type="submit"
+              aria-label="create button"
+              id="modal-avatar-button-create"
+              disabled
+            >
+              Save
+            </button>
+          </form>
+  </div>
+</div>
+          <!-- Deletion Confirmation Modal -->
   
   </body>
 </html>
