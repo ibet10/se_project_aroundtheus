@@ -21,11 +21,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
+          <div class="profile__avatar-section">
           <img
             src="<%=require('./images/jacques-cousteau-min.jpg')%>"
             alt="Profile image of Jacques Cousteau"
             class="profile__image"
           />
+          <button class="profile__avatar-edit-button" type="button" id="avatar-edit-button" aria-label="profile avatar edit button"></button>
+        </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -234,7 +237,7 @@
     <h3 class="modal__title" id="delete-card-confirm-title">Are you sure?</h3>
     <form class="modal__form" id="delete-card-confirm-form" name="delete-card-confirm-modal-form">
       <button
-        class="button modal__button modal__button-confirm-submit"
+        class="button modal__button modal__button_disabled"
         type="submit"
         aria-label="yes delete button"
         id="delete-card-confirm-modal-button"

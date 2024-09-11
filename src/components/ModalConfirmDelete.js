@@ -1,12 +1,15 @@
 import Modal from "./Modal.js";
 
 export default class ModalConfirmDelete extends Modal {
-  constructor(modalSelector, handleFormSubmit) {
+  constructor(modalSelector) {
     super(modalSelector);
     this._modalForm = this._modalElement.querySelector(".modal__form");
     this._modalSubmitButton = this._modalElement.querySelector(
-      ".modal__button-confirm-submit"
+      ".modal__button_disabled"
     );
+  }
+
+  setDeleteConfirmation(handleFormSubmit) {
     this._handleFormSubmit = handleFormSubmit;
   }
 

@@ -42,6 +42,12 @@ const profileModalDescriptionInput = profileEditModalPopup.querySelector(
 );
 const profileEditModalForm = document.forms["profile-form"];
 
+const profileAvatarButton = document.querySelector(
+  ".profile__avatar-edit-button"
+);
+const profileAvatarModal = document.querySelector("#profile-avatar-modal");
+const profileAvatarModalForm = document.forms[".update-avatar-form"]; //for Validator, use name.
+
 //
 // Add Card Modal Elements
 //
@@ -123,6 +129,15 @@ profileModal.setEventListeners();
 //
 const imagePreviewModal = new ModalWithImage("#preview-image-modal");
 imagePreviewModal.setEventListeners();
+
+//
+// ModalConfirmDelete Instantiation
+//
+/*
+const deleteConfirmation = new ModalConfirmDelete({
+  modalSelector: "#",
+});
+*/
 
 //
 // Form Validation
