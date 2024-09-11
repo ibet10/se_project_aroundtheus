@@ -54,6 +54,15 @@ const addCardUrlInput = addCardModalForm.querySelector(
 );
 
 //
+//
+/*Cards should be rendered after the user information is received from the server. 
+Сreate a function in Api.js and return the Promise.all() method. 
+Pass the array of function calls for getting user information 
+and the list of cards to Promise.all() as a parameter. */
+//
+//
+
+//
 // UserInfo Instantiation
 //
 const userInfo = new UserInfo({
@@ -151,23 +160,6 @@ function handleAddCardModalSubmit(data) {
 
   addCardModal.close();
 }
-/*
-function handleAddCardModalSubmit() {
-  const name = addCardTitleInput.value;
-  const link = addCardUrlInput.value;
-  const cardData = { name, link };
-
-  //const cardData = addCardModal.getInputValues();
-
-  const cardElement = createCard(cardData);
-  section.addItem(cardElement);
-
-  addCardModalForm.reset();
-  formValidators["add-card-modal-form"].disableSubmitButton();
-
-  addCardModal.close();
-}
-  */
 
 const handleImageClick = (name, link) => {
   imagePreviewModal.open({ name, link });
@@ -179,13 +171,6 @@ const handleImageClick = (name, link) => {
 addNewCardModalButton.addEventListener("click", () => {
   addCardModal.open();
 });
-/*
-addNewCardModalButton.addEventListener("click", () => {
-  addCardModalForm.reset();
-  formValidators["add-card-modal-form"].resetValidation();
-  addCardModal.open();
-});
-*/
 
 profileEditButton.addEventListener("click", () => {
   formValidators["profile-edit-modal-form"].resetValidation();
