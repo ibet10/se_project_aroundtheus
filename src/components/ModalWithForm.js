@@ -7,6 +7,8 @@ export default class ModalWithForm extends Modal {
     this._modalForm = this._modalElement.querySelector(".modal__form");
     this._inputList = this._modalForm.querySelectorAll(".modal__input");
     this._handleFormSubmit = handleFormSubmit;
+    this._submitButton = this._modalForm.querySelector(".modal__button");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   //Private method _getInputValues()
@@ -19,6 +21,15 @@ export default class ModalWithForm extends Modal {
     return inputFields;
   }
 
+  //Public method setLoading()
+  setLoading(isLoading, savingText = "Saving...") {
+    if (isLoading) {
+      this._submitButton.textContent = savingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
+
   /* Public method getInputValues()
   getInputValues() {
     return this._getInputValues();
@@ -29,9 +40,33 @@ export default class ModalWithForm extends Modal {
     //add submit event listener to the form
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      this.setLoading(true);
+      this._handleFormSubmit(this._getInputValues())
+        .then(() => {
+          this._modalForm.reset();
+          this.close();
+        })
+        .catch((err) => {
+          console.error("Error during form submission", err);
+        })
+        .finally(() => {
+          this.setLoading(false);
+        });
+    });
+    //call setEventListeners() method of the parent (Modal) class
+    super.setEventListeners();
+  }
+
+  /* REMOVE
+//Public method setEventListeners()
+  setEventListeners() {
+    //add submit event listener to the form
+    this._modalForm.addEventListener("submit", (e) => {
+      e.preventDefault();
       this._handleFormSubmit(this._getInputValues());
     });
     //call setEventListeners() method of the parent (Modal) class
     super.setEventListeners();
   }
+*/
 }
