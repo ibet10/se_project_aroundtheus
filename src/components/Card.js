@@ -8,7 +8,7 @@ export default class Card {
   ) {
     this._name = cardData.name;
     this._link = cardData.link;
-    this._id = cardData.id;
+    this._id = cardData._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeCard = handleLikeCard;
@@ -38,6 +38,11 @@ export default class Card {
       .cloneNode(true);
   }
 
+  // Method to get card Id
+  getCardId() {
+    return this._id;
+  }
+
   // 1. _setEventListeners method that sets the necessary event listeners
   _setEventListeners() {
     // a. ".card__image"
@@ -60,12 +65,12 @@ export default class Card {
     }
   }
 
-  // 2. Private methods for the like and the delete button handlers
-  _handleLikeButton() {
+  // 2. Public methods for the like and the delete button handlers
+  handleLikeButton() {
     this._handleLikeCard(this);
   }
 
-  _handleDeleteButton() {
+  handleDeleteButton() {
     if (this._handleDeleteCard) {
       this._handleDeleteCard(this)
         .then(() => {

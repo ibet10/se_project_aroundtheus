@@ -1,4 +1,4 @@
-import Api from "../components/API.js";
+/*import Api from "../components/Api.js";
 
 import Card from "../components/Card.js";
 
@@ -14,9 +14,10 @@ import ModalWithImage from "../components/ModalWithImage.js";
 
 import ModalConfirmDelete from "../components/ModalConfirmDelete.js";
 
-import { configItems, initialCards } from "../utils/constants.js"; //remove InitialCards
+import { configItems, initialCards } from "../utils/constants.js";
 
 import "./index.css";
+*/
 
 //
 // API
@@ -46,7 +47,7 @@ const profileAvatarButton = document.querySelector(
   ".profile__avatar-edit-button"
 );
 const profileAvatarModal = document.querySelector("#profile-avatar-modal");
-const profileAvatarModalForm = document.forms["update-avatar-form"]; //for Validator, use name.
+const profileAvatarModalForm = document.forms[".update-avatar-form"]; //for Validator, use name.
 
 //
 // Add Card Modal Elements
@@ -61,21 +62,13 @@ const addCardUrlInput = addCardModalForm.querySelector(
 );
 
 //
-// Fetch User and Cards Data on Page Load
+// Delete Confirmation Modal Elements
 //
-
-// New CODE ADDED to TEST
-api
-  .getCardsAndUserInfo()
-  .then(([cardsData, userData]) => {
-    userInfo.setUserInfo({
-      title: userData.name,
-      description: userData.about,
-    });
-
-    section.renderItems(cardsData);
-  })
-  .catch((err) => console.log(`Failed to load data: ${err}`));
+/*
+const confirmDeleteButton = .querySelector(
+  ".modal__button-confirm-submit"
+);
+*/
 
 //
 // UserInfo Instantiation
@@ -89,19 +82,6 @@ const userInfo = new UserInfo({
 //
 // Section Instantiation
 //
-// New CODE ADDED to TEST
-const section = new Section(
-  {
-    items: [],
-    renderer: (cardData) => {
-      const cardElement = createCard(cardData);
-      section.addItem(cardElement);
-    },
-  },
-  ".cards__list"
-);
-
-/*
 const section = new Section(
   {
     items: initialCards,
@@ -112,79 +92,30 @@ const section = new Section(
   },
   ".cards__list"
 );
-*/
+
 //
 // Special Function: createCard
 //
-// New CODE ADDED to TEST
-function createCard(cardData) {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    handleImageClick,
-    handleLikeCard,
-    handleDeleteCard
-  );
-  return card.getView();
-}
-/*
+
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   return card.getView();
 }
-*/
+
 //
 // ModalWithForm Instantiation
 //
-// New CODE ADDED to TEST
-const addCardModal = new ModalWithForm("#add-card-modal", (addCardData) => {
-  addCardModal.setLoading(true);
-  api
-    .createNewCard({ name: addCardData.title, link: addCardData.url })
-    .then((cardData) => {
-      createCard(cardData);
-      addCardModal.close();
-    })
-    .catch((err) => console.error("Error adding new card:", err))
-    .finally(() => {
-      addCardModal.setLoading(false);
-    });
-});
-addCardModal.setEventListeners();
-/*
 const addCardModal = new ModalWithForm(
   "#add-card-modal",
   handleAddCardModalSubmit
 );
 addCardModal.setEventListeners();
-*/
 
-// New CODE ADDED to TEST
-const profileModal = new ModalWithForm("#profile-edit-modal", (profileData) => {
-  profileModal.setLoading(true);
-
-  api
-    .updateProfileInfo(profileData.title, profileData.description)
-    .then((updatedUserData) => {
-      userInfo.setUserInfo(updatedUserData.title, updatedUserData.description);
-      profileModal.close();
-    })
-    .catch((err) =>
-      console.error("Error updating profile user information:", err)
-    )
-    .finally(() => {
-      profileModal.setLoading(false);
-    });
-});
-profileModal.setEventListeners();
-
-/*
 const profileModal = new ModalWithForm(
   "#profile-edit-modal",
   handleProfileModalSubmit
 );
 profileModal.setEventListeners();
-*/
 
 //
 // ModalWithImage Instantiation
@@ -193,33 +124,15 @@ const imagePreviewModal = new ModalWithImage("#preview-image-modal");
 imagePreviewModal.setEventListeners();
 
 //
-// Profile Update Avatar Modal Instantiation
-//
-// New CODE ADDED to TEST
-const avatarUpdateModal = new ModalWithForm(
-  "#profile-avatar-modal",
-  (avatarData) => {
-    avatarUpdateModal.setLoading(true);
-
-    api
-      .updateAvatar(avatarData.link)
-      .then((res) => {
-        userInfo.changeAvatar(res.avatar);
-        avatarUpdateModal.close();
-      })
-      .catch((err) => console.error("Error updating profile image:", err))
-      .finally(() => {
-        avatarUpdateModal.setLoading(false);
-      });
-  }
-);
-
-//
 // ModalConfirmDelete Instantiation
 //
-// New CODE ADDED to TEST
-const deleteConfirmation = new ModalConfirmDelete("#delete-card-confirm-modal");
-deleteConfirmation.setEventListeners();
+// will probably need to add an eventlistener
+// and also will need to use validator form, use form name
+/*
+const deleteConfirmation = new ModalConfirmDelete({
+  modalSelector: "#",
+});
+*/
 
 //
 // Form Validation
@@ -245,20 +158,7 @@ enableValidation(configItems);
 //Event Handlers
 //
 
-// New CODE ADDED to TEST
-function handleProfileModalSubmit(data) {
-  api
-    .updateProfileInfo(data.title, data.description)
-    .then((userData) => {
-      userInfo.setUserInfo({
-        title: userData.name,
-        description: userData.about,
-      });
-      profileModal.close();
-    })
-    .catch((err) => console.log(`Failed to update user info: ${err}`));
-}
-/*
+//REFACTOR to pass return api
 function handleProfileModalSubmit(data) {
   userInfo.setUserInfo({
     title: data.title,
@@ -267,23 +167,8 @@ function handleProfileModalSubmit(data) {
 
   profileModal.close();
 }
-  */
 
-// New CODE ADDED to TEST
-function handleAddCardModalSubmit(data) {
-  api
-    .createNewCard({ name: data.title, link: data.url })
-    .then((cardData) => {
-      const cardElement = createCard(cardData);
-      section.addItem(cardElement);
-
-      addCardModalForm.reset();
-      formValidators["add-card-form"].disableSubmitButton();
-      addCardModal.close();
-    })
-    .catch((err) => console.log(`Failed to add card: ${err}`));
-}
-/*
+//REFACTOR to pass return api
 function handleAddCardModalSubmit(data) {
   const name = data.title;
   const link = data.url;
@@ -298,34 +183,10 @@ function handleAddCardModalSubmit(data) {
 
   addCardModal.close();
 }
-*/
 
 const handleImageClick = (name, link) => {
   imagePreviewModal.open({ name, link });
 };
-
-//Delete a Card using api.deleteCard method
-//when implementing ModalConfirmDelete, use this method to remove cards both from the UI and the server.
-/*
-function handleDeleteCard(data) {
-deleteConfirmation.open();
-deleteConfirmation.setDeleteConfirmation(() => {
-  api.deleteCard(data._id)
-  .then(() => {
-   deleteConfirmation.close();
-   data.handleDeleteButton();
-    })
-   .catch(console.error);
-});
-}
-*/
-
-//Like a Card using api.likeCard and api.dislikeCard methods
-/*
-function handleLikeCard(data) {
-if (data)
-}
-*/
 
 //
 // Event Listeners
@@ -335,11 +196,6 @@ addNewCardModalButton.addEventListener("click", () => {
 });
 
 //ADD eventListener for Avatar edit form
-// New CODE ADDED to TEST
-profileAvatarButton.addEventListener("click", () => {
-  avatarUpdateModal.open();
-  formValidators["update-avatar-modal-form"].enableValidation(); //not sure if correct
-});
 
 profileEditButton.addEventListener("click", () => {
   formValidators["profile-edit-modal-form"].resetValidation();
