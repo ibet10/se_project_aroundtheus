@@ -23,6 +23,16 @@ network request (e.g., deleting a card on a server).
   setEventListeners() {
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      this._handleFormSubmit();
+      this._modalForm.reset();
+      this.close();
+    });
+    super.setEventListeners();
+  }
+  /*
+  setEventListeners() {
+this._modalForm.addEventListener("submit", (e) => {
+      e.preventDefault();
       if (typeof this._handleFormSubmit === "function") {
         this._handleFormSubmit()
           .then(() => {
@@ -37,20 +47,6 @@ network request (e.g., deleting a card on a server).
       }
     });
 
-    super.setEventListeners();
-  }
-  /*setEventListeners() {
-    this._modalForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      this._handleFormSubmit()
-        .then(() => {
-          this._modalForm.reset();
-          this.close();
-        })
-        .catch((err) => {
-          console.error("Error during form submission", err);
-        });
-    });
     super.setEventListeners();
   }
     */

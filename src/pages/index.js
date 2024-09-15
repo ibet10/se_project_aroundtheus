@@ -261,7 +261,7 @@ function handleProfileModalSubmit(data) {
       });
       profileModal.close();
     })
-    .catch((err) => console.error(`Failed to update user info: ${err}`))
+    .catch((err) => console.error(`Failed to update users info: ${err}`))
     .finally(() => {
       profileModal.setLoading(false);
     });

@@ -31,12 +31,25 @@ export default class Api {
   }
   //PATCH /users/me – Update your profile information
   updateProfileInfo(name, about) {
+    const url = `${this._baseUrl}/users/me`;
+    const options = {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name, about }),
+    };
+
+    console.log("URL:", url);
+    console.log("Options:", options);
+
+    return this._request(url, options);
+  }
+  /*updateProfileInfo(name, about) {
     return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ name, about }),
     });
-  }
+  }*/
   //PATCH /users/me/avatar – Update avatar
   updateAvatar(url) {
     return this._request(`${this._baseUrl}/users/me/avatar`, {
