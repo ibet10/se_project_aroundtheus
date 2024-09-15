@@ -17,10 +17,6 @@ export default class Api {
     return this._checkRequest(res);
   }
 
-  /*Cards should be rendered after the user information is received from the server. 
-Сreate a function in Api.js and return the Promise.all() method. 
-Pass the array of function calls for getting user information 
-and the list of cards to Promise.all() as a parameter. */
   getCardsAndUserInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }

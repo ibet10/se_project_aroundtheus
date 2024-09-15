@@ -9,6 +9,7 @@ export default class Card {
     this._name = cardData.name;
     this._link = cardData.link;
     this._id = cardData._id;
+    this._isLiked = cardData.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeCard = handleLikeCard;
@@ -43,34 +44,42 @@ export default class Card {
     return this._id;
   }
 
+  //Private Method _updateLikeStatus()
+  _updateLikeStatus() {
+    this._likeButton.classList.toggle(
+      "card__like-button_active",
+      this._isLiked
+    );
+  }
+
+  // Method to set Card Likes
+  setCardLikes(isLiked) {
+    this._isLiked = isLiked;
+    this._updateLikeStatus();
+  }
+
   // 1. _setEventListeners method that sets the necessary event listeners
   _setEventListeners() {
     // a. ".card__image"
-    if (this._cardImage) {
-      this._cardImage.addEventListener("click", () => {
-        this._handleImageClick(this._name, this._link);
-      });
-    }
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
+    });
     // b. ".card__like-button"
-    if (this._likeButton) {
-      this._likeButton.addEventListener("click", () => {
-        this._handleLikeButton();
-      });
-    }
+    this._likeButton.addEventListener("click", () => {
+      this._handleLikeButton();
+    });
     // c. "#card-trash-bin-button"
-    if (this._trashButton) {
-      this._trashButton.addEventListener("click", () => {
-        this._handleDeleteButton();
-      });
-    }
+    this._trashButton.addEventListener("click", () => {
+      this._handleDeleteButton();
+    });
   }
 
-  // 2. Public methods for the like and the delete button handlers
-  handleLikeButton() {
+  // 2. Private methods for the like and the delete button handlers
+  _handleLikeButton() {
     this._handleLikeCard(this);
   }
 
-  handleDeleteButton() {
+  _handleDeleteButton() {
     if (this._handleDeleteCard) {
       this._handleDeleteCard(this)
         .then(() => {
