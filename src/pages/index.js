@@ -26,7 +26,7 @@ const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "5457953a-b073-4cb8-8a6a-6ab24a852af5",
-    "Content-Type": "application/json,",
+    "Content-Type": "application/json",
   },
 });
 
@@ -276,10 +276,10 @@ function handleAddCardModalSubmit(data) {
       section.addItem(cardElement);
 
       addCardModalForm.reset();
-      formValidators["add-card-form"].disableSubmitButton();
+      //formValidators["add-card-form"].enableValidation(configItems);//Should be removed?
       addCardModal.close();
     })
-    .catch((err) => console.log(`Failed to add card: ${err}`))
+    .catch((err) => console.error(`Failed to add card: ${err}`))
     .finally(() => {
       addCardModal.setLoading(false);
     });

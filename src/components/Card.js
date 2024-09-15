@@ -82,17 +82,15 @@ export default class Card {
 
   // 2. Private methods for the like and the delete button handlers
   _handleLikeButton() {
-    this._handleLikeCard(this._id);
+    this._handleLikeCard(this);
   }
 
   //New Code to Test
   _handleDeleteButton() {
     if (this._handleDeleteCard) {
-      this._handleDeleteCard(this._id)
-        .then(() => this.removeCard())
-        .catch((err) => console.error("Failed to delete card:", err));
+      this._handleDeleteCard(this);
     } else {
-      console.error("Delete handler is not defined");
+      (err) => console.error("Failed to delete card:", err);
     }
   }
   /*
