@@ -58,6 +58,12 @@ export default class Card {
     this._updateLikeStatus();
   }
 
+  // Method to Remove Card
+  removeCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
   // 1. _setEventListeners method that sets the necessary event listeners
   _setEventListeners() {
     // a. ".card__image"
@@ -76,12 +82,23 @@ export default class Card {
 
   // 2. Private methods for the like and the delete button handlers
   _handleLikeButton() {
-    this._handleLikeCard(this);
+    this._handleLikeCard(this._id);
   }
 
+  //New Code to Test
   _handleDeleteButton() {
     if (this._handleDeleteCard) {
-      this._handleDeleteCard(this)
+      this._handleDeleteCard(this._id)
+        .then(() => this.removeCard())
+        .catch((err) => console.error("Failed to delete card:", err));
+    } else {
+      console.error("Delete handler is not defined");
+    }
+  }
+  /*
+  _handleDeleteButton() {
+    if (this._handleDeleteCard) {
+      this._handleDeleteCard(this._id)
         .then(() => {
           this._cardElement.remove();
           this._cardElement = null;
@@ -89,7 +106,7 @@ export default class Card {
         .catch((err) => console.error("Failed to delete card:", err));
     }
   }
-
+*/
   // 3. Public method that returns a fully functional card element populated with the appropriate data
   getView() {
     return this._cardElement;

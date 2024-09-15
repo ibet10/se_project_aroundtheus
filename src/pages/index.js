@@ -14,7 +14,7 @@ import ModalWithImage from "../components/ModalWithImage.js";
 
 import ModalConfirmDelete from "../components/ModalConfirmDelete.js";
 
-import { configItems, initialCards } from "../utils/constants.js"; //remove InitialCards
+import { configItems } from "../utils/constants.js"; //remove InitialCards
 
 import "./index.css";
 
@@ -95,8 +95,29 @@ const section = new Section(
 api
   .getCardsAndUserInfo()
   .then(([cardsData, userData]) => {
-    console.log("Card Data:", cardsData);
     console.log("User Data:", userData);
+    console.log("Cards Data:", cardsData); // Ensure cardsData is defined and an array
+
+    userInfo.setUserInfo({
+      title: userData.name,
+      description: userData.about,
+    });
+
+    // Defensive check
+    if (cardsData && Array.isArray(cardsData)) {
+      section.renderItems(cardsData);
+    } else {
+      console.error("cardsData is not an array or undefined:", cardsData);
+    }
+  })
+  .catch((err) => console.log(`Failed to load data: ${err}`));
+/*
+  api
+  .getCardsAndUserInfo()
+  .then(([cardsData, userData]) => {
+    console.log("User Data:", userData);
+    console.log("Card Data:", cardsData);
+
     userInfo.setUserInfo({
       title: userData.name,
       description: userData.about,
@@ -105,7 +126,7 @@ api
     section.renderItems(cardsData);
   })
   .catch((err) => console.log(`Failed to load data: ${err}`));
-
+*/
 //
 // UserInfo Instantiation
 //
@@ -115,26 +136,6 @@ const userInfo = new UserInfo({
   avtarSelector: ".profile__image",
 });
 
-//
-// Special Function: createCard
-//
-// New CODE ADDED to TEST
-function createCard(cardData) {
-  const card = new Card(
-    cardData,
-    "#card-template",
-    handleImageClick,
-    handleLikeCard,
-    handleDeleteCard
-  );
-  return card.getView();
-}
-/*
-function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  return card.getView();
-}
-*/
 //
 // ModalWithForm Instantiation
 //
@@ -304,24 +305,89 @@ const handleImageClick = (name, link) => {
 };
 
 //Delete a Card using api.deleteCard method
-//when implementing ModalConfirmDelete, use this method to remove cards both from the UI and the server.
+function handleDeleteCard(card) {
+  deleteConfirmation.open();
+  deleteConfirmation.setDeleteConfirmation(() => {
+    return api
+      .deleteCard(card.getCardId())
+      .then(() => {
+        deleteConfirmation.close();
+        card.removeCard();
+      })
+      .catch(console.error);
+  });
+}
 /*
-function handleDeleteCard(data) {
-deleteConfirmation.open();
-deleteConfirmation.setDeleteConfirmation(() => {
-  api.deleteCard(data._id)
-  .then(() => {
-   deleteConfirmation.close();
-   data.handleDeleteButton();
-    })
-   .catch(console.error);
-});
+function handleDeleteCard(cardId) {
+  deleteConfirmation.open();
+  deleteConfirmation.setDeleteConfirmation(() => {
+    api
+      .deleteCard(cardId._id)
+      .then(() => {
+        deleteConfirmation.close();
+        cardId.handleDeleteButton();
+      })
+      .catch(console.error);
+  });
 }
 */
 
 //Like a Card using api.likeCard and api.dislikeCard methods
+function handleLikeCard(card) {
+  if (card._isLiked) {
+    return api
+      .dislikeCard(card.getCardId())
+      .then(() => {
+        card.setCardLikes(false);
+      })
+      .catch((err) => console.error("Failed to dislike card:", err));
+  } else {
+    return api
+      .likeCard(card.getCardId())
+      .then(() => {
+        card.setCardLikes(true);
+      })
+      .catch(console.error);
+  }
+}
+
+/*function handleLikeCard(cardId) {
+  if (cardId.isLiked) {
+    api
+      .dislikeCard(cardId)
+      .then((res) => {
+        cardId.setCardLikes(res.isLiked);
+      })
+      .catch((err) => console.error(err));
+  } else {
+    api
+      .likeCard(cardId)
+      .then((res) => {
+        cardId.setCardLikes(res.isLiked);
+      })
+      .catch(console.error);
+  }
+}
+  */
+
+//
+// Special Function: createCard
+//
+// New CODE ADDED to TEST
+function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    handleLikeCard,
+    handleDeleteCard
+  );
+  return card.getView();
+}
 /*
-function handleLikeCard(data) {
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  return card.getView();
 }
 */
 
@@ -350,7 +416,6 @@ profileEditButton.addEventListener("click", () => {
   profileModal.open();
 });
 
-section.renderItems();
 /*
 //PREVIOUS CODE FOR PERSONAL REFERENCE
 //

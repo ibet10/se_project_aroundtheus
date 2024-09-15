@@ -5,7 +5,7 @@ export const configItems = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
+/*
 export const initialCards = [
   {
     name: "Yosemite Valley",
@@ -32,3 +32,4 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+*/
