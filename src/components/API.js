@@ -1,4 +1,3 @@
-//export to index.js
 export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;

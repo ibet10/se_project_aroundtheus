@@ -402,7 +402,7 @@ addNewCardModalButton.addEventListener("click", () => {
 // New CODE ADDED to TEST
 profileAvatarButton.addEventListener("click", () => {
   avatarUpdateModal.open();
-  formValidators["update-avatar-modal-form"].enableValidation(); //not sure if correct
+  formValidators["update-avatar-modal-form"].resetValidation(); //not sure if correct
 });
 
 profileEditButton.addEventListener("click", () => {
