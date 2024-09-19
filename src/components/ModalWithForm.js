@@ -30,13 +30,25 @@ export default class ModalWithForm extends Modal {
     }
   }
 
-  /* Public method getInputValues()
+  //Public method getInputValues()
   getInputValues() {
     return this._getInputValues();
-  }*/
+  }
 
   //Public method setEventListeners()
-  /*setEventListeners() {
+  setEventListeners() {
+    //add submit event listener to the form
+    this._modalForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this.setLoading(true);
+      this._handleFormSubmit(this._getInputValues());
+    });
+    //call setEventListeners() method of the parent (Modal) class
+    super.setEventListeners();
+  }
+
+  /*Public method setEventListeners()
+  setEventListeners() {
     //add submit event listener to the form
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -57,16 +69,4 @@ export default class ModalWithForm extends Modal {
     super.setEventListeners();
   }
 */
-
-  //Public method setEventListeners()
-  setEventListeners() {
-    //add submit event listener to the form
-    this._modalForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      this.setLoading(true);
-      this._handleFormSubmit(this._getInputValues());
-    });
-    //call setEventListeners() method of the parent (Modal) class
-    super.setEventListeners();
-  }
 }

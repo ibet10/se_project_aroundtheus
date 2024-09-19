@@ -49,6 +49,7 @@ export default class Api {
       body: JSON.stringify({ name, about }),
     });
   }*/
+
   //PATCH /users/me/avatar – Update avatar
   updateAvatar(url) {
     return this._request(`${this._baseUrl}/users/me/avatar`, {
@@ -74,6 +75,7 @@ export default class Api {
       body: JSON.stringify({ name, link }),
     });
   }
+
   //DELETE /cards/:cardId – Delete a card
   deleteCard(cardId) {
     return this._request(`${this._baseUrl}/cards/${cardId}`, {
@@ -81,6 +83,7 @@ export default class Api {
       headers: this._headers,
     });
   }
+
   //PUT /cards/:cardId/likes – Like a card
   likeCard(cardId) {
     return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
@@ -96,15 +99,3 @@ export default class Api {
     });
   }
 }
-
-/*
-Here is the address for the "Around the U.S." project server:
-https://around-api.en.tripleten-services.com/v1.
-
-Personal Token
-{"user":{"name":"Placeholder name",
-"about":"Placeholder description",
-"avatar":"https://practicum-content.s3.amazonaws.com/resources/avatar_placeholder_1704989734.svg",
-"_id":"89432f9019f102e3e475ba50"},
-"token":"5457953a-b073-4cb8-8a6a-6ab24a852af5"}
-*/

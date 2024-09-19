@@ -114,7 +114,7 @@ export default class Card {
 }
 
 /* 
-Previous Card Class
+Previous Card Class For Personal Reference
 
 export default class Card {
   constructor(

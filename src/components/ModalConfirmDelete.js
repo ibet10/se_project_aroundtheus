@@ -9,11 +9,6 @@ export default class ModalConfirmDelete extends Modal {
     );
   }
 
-  /*
-Ensure that the handleFormSubmit function set via setDeleteConfirmation()
-returns a promise, particularly if it's doing something like making a 
-network request (e.g., deleting a card on a server).
-*/
   //Public method setDeleteConfirmation()
   setDeleteConfirmation(handleFormSubmit) {
     this._handleFormSubmit = handleFormSubmit;

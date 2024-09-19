@@ -22,7 +22,7 @@ export default class UserInfo {
     this._descriptionElement.textContent = description;
   }
 
-  changeAvatar({ avatar }) {
+  changeAvatar(avatar) {
     this._avatarElement.src = avatar;
   }
 }
