@@ -207,7 +207,7 @@ const avatarUpdateModal = new ModalWithForm(
     avatarUpdateModal.setLoading(true);
 
     api
-      .updateAvatar(avatarData.link)
+      .updateAvatar(avatarData.url)
       .then((res) => {
         userInfo.changeAvatar(res.avatar);
         avatarUpdateModal.close();
@@ -218,6 +218,7 @@ const avatarUpdateModal = new ModalWithForm(
       });
   }
 );
+avatarUpdateModal.setEventListeners();
 
 //
 // ModalConfirmDelete Instantiation

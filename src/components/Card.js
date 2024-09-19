@@ -28,6 +28,7 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
 
+    this._updateLikeStatus();
     this._setEventListeners();
   }
 
@@ -107,6 +108,7 @@ export default class Card {
 */
   // 3. Public method that returns a fully functional card element populated with the appropriate data
   getView() {
+    this.setCardLikes(this._isLiked);
     return this._cardElement;
   }
 }
