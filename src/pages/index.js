@@ -335,7 +335,7 @@ function handleDeleteCard(cardId) {
 //Like a Card using api.likeCard and api.dislikeCard methods
 //
 function handleLikeCard(card) {
-  if (card._isLiked) {
+  if (card.isLiked) {
     return api
       .dislikeCard(card.getCardId())
       .then(() => {
@@ -396,6 +396,7 @@ function createCard(cardData) {
 //
 addNewCardModalButton.addEventListener("click", () => {
   addCardModal.open();
+  formValidators["add-card-modal-form"].resetValidation();
 });
 
 profileAvatarButton.addEventListener("click", () => {

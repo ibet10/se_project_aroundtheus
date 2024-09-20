@@ -18,16 +18,6 @@ export default class ModalConfirmDelete extends Modal {
   setEventListeners() {
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      this._handleFormSubmit();
-      this._modalForm.reset();
-      this.close();
-    });
-    super.setEventListeners();
-  }
-  /*
-  setEventListeners() {
-this._modalForm.addEventListener("submit", (e) => {
-      e.preventDefault();
       if (typeof this._handleFormSubmit === "function") {
         this._handleFormSubmit()
           .then(() => {
@@ -44,5 +34,13 @@ this._modalForm.addEventListener("submit", (e) => {
 
     super.setEventListeners();
   }
-    */
+  /*setEventListeners() {
+    this._modalForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this._handleFormSubmit();
+      this._modalForm.reset();
+      this.close();
+    });
+    super.setEventListeners();
+  }*/
 }
