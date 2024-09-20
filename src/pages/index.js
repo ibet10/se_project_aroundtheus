@@ -14,7 +14,7 @@ import ModalWithImage from "../components/ModalWithImage.js";
 
 import ModalConfirmDelete from "../components/ModalConfirmDelete.js";
 
-import { configItems } from "../utils/constants.js"; //remove InitialCards
+import { configItems } from "../utils/constants.js"; //removed InitialCards
 
 import "./index.css";
 
@@ -144,7 +144,7 @@ const userInfo = new UserInfo({
 // ModalWithForm Instantiation
 //
 const addCardModal = new ModalWithForm("#add-card-modal", (addCardData) => {
-  addCardModal.setLoading(true);
+  addCardModal.renderLoading(true);
   handleAddCardModalSubmit(addCardData);
 });
 
@@ -167,7 +167,7 @@ addCardModal.setEventListeners();
 */
 
 const profileModal = new ModalWithForm("#profile-edit-modal", (profileData) => {
-  profileModal.setLoading(true);
+  profileModal.renderLoading(true);
   handleProfileModalSubmit(profileData);
 });
 
@@ -204,7 +204,7 @@ imagePreviewModal.setEventListeners();
 const avatarUpdateModal = new ModalWithForm(
   "#profile-avatar-modal",
   (avatarData) => {
-    avatarUpdateModal.setLoading(true);
+    avatarUpdateModal.renderLoading(true);
 
     api
       .updateAvatar(avatarData.url)
@@ -214,7 +214,7 @@ const avatarUpdateModal = new ModalWithForm(
       })
       .catch((err) => console.error("Error updating profile image:", err))
       .finally(() => {
-        avatarUpdateModal.setLoading(false);
+        avatarUpdateModal.renderLoading(false);
       });
   }
 );
@@ -261,7 +261,7 @@ function handleProfileModalSubmit(data) {
     })
     .catch((err) => console.error(`Failed to update users info: ${err}`))
     .finally(() => {
-      profileModal.setLoading(false);
+      profileModal.renderLoading(false);
     });
 }
 
@@ -278,7 +278,7 @@ function handleAddCardModalSubmit(data) {
     })
     .catch((err) => console.error(`Failed to add card: ${err}`))
     .finally(() => {
-      addCardModal.setLoading(false);
+      addCardModal.renderLoading(false);
     });
 }
 /* Previous handleAddCardModalSubmit

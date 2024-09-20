@@ -9,7 +9,7 @@ export default class Card {
     this._name = cardData.name;
     this._link = cardData.link;
     this._id = cardData._id;
-    this._isLiked = cardData.isLiked;
+    this.isLiked = cardData.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleLikeCard = handleLikeCard;
@@ -47,15 +47,12 @@ export default class Card {
 
   //Private Method _updateLikeStatus()
   _updateLikeStatus() {
-    this._likeButton.classList.toggle(
-      "card__like-button_active",
-      this._isLiked
-    );
+    this._likeButton.classList.toggle("card__like-button_active", this.isLiked);
   }
 
   // Method to set Card Likes
   setCardLikes(isLiked) {
-    this._isLiked = isLiked;
+    this.isLiked = isLiked;
     this._updateLikeStatus();
   }
 
@@ -86,7 +83,7 @@ export default class Card {
     this._handleLikeCard(this);
   }
 
-  //New Code to Test
+  // 3. Private delete button handler
   _handleDeleteButton() {
     if (this._handleDeleteCard) {
       this._handleDeleteCard(this);
@@ -94,7 +91,7 @@ export default class Card {
       (err) => console.error("Failed to delete card:", err);
     }
   }
-  /*
+  /* Previous delete button handler
   _handleDeleteButton() {
     if (this._handleDeleteCard) {
       this._handleDeleteCard(this._id)
@@ -106,15 +103,16 @@ export default class Card {
     }
   }
 */
-  // 3. Public method that returns a fully functional card element populated with the appropriate data
+
+  // 4. Public method that returns a fully functional card element populated with the appropriate data
   getView() {
-    this.setCardLikes(this._isLiked);
+    this.setCardLikes(this.isLiked);
     return this._cardElement;
   }
 }
 
-/* 
-Previous Card Class For Personal Reference
+/* Previous Card Class For Personal Reference
+
 
 export default class Card {
   constructor(

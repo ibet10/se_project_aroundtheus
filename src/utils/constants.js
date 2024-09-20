@@ -5,7 +5,8 @@ export const configItems = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-/*
+
+/* Initial Cards no Longer in use (Personal Reference)
 export const initialCards = [
   {
     name: "Yosemite Valley",
