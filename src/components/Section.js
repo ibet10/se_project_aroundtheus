@@ -16,14 +16,7 @@ export default class Section {
       console.error("Items is not an array:", items);
     }
   }
-  /* 
-  renderItems(items) {
-    this._items = items;
-    this._items.forEach((item) => {
-      this._renderer(item);
-    });
-  }
-*/
+
   //Public method addItem()
   addItem(element) {
     this._container.prepend(element);

@@ -15,7 +15,6 @@ export default class ModalConfirmDelete extends Modal {
   }
 
   //Public method setEventListeners()
-
   setEventListeners() {
     this._modalForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -25,25 +24,4 @@ export default class ModalConfirmDelete extends Modal {
     });
     super.setEventListeners();
   }
-  /*
-  setEventListeners() {
-    this._modalForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (typeof this._handleFormSubmit === "function") {
-        this._handleFormSubmit()
-          .then(() => {
-            this._modalForm.reset();
-            this.close();
-          })
-          .catch((err) => {
-            console.error("Error during form submission", err);
-          });
-      } else {
-        console.error("No form submit handler is set");
-      }
-    });
-
-    super.setEventListeners();
-  }
-    */
 }
