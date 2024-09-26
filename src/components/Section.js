@@ -6,12 +6,24 @@ export default class Section {
   }
 
   //Public method renderItems()
-  renderItems() {
+  renderItems(items) {
+    if (Array.isArray(items)) {
+      this._items = items;
+      this._items.forEach((item) => {
+        this._renderer(item);
+      });
+    } else {
+      console.error("Items is not an array:", items);
+    }
+  }
+  /* 
+  renderItems(items) {
+    this._items = items;
     this._items.forEach((item) => {
       this._renderer(item);
     });
   }
-
+*/
   //Public method addItem()
   addItem(element) {
     this._container.prepend(element);

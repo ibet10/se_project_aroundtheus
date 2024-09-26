@@ -6,6 +6,7 @@ export const configItems = {
   errorClass: "modal__error_visible",
 };
 
+/* Initial Cards no Longer in use (Personal Reference)
 export const initialCards = [
   {
     name: "Yosemite Valley",
@@ -32,3 +33,4 @@ export const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+*/

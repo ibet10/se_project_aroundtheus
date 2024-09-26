@@ -8,9 +8,11 @@
 
 **Intro**
 
-This project was a an attempt to create a responsive webpage design using more advanced HTML and CSS code.
+This project was a an attempt to create a responsive webpage design using more advanced HTML and CSS code and implements interactive webdesign using JavaScript.
 
 The naming structure follows BEM naming rules and the project introduces the use of Grid layout in conjunction with Flexbox.
+
+It also introduces interactive modals that accept user inputs to update information, and new images to an existing layout, and implements the use of API to interact with a live server to retrieve and share data.
 
 The webpage was created referencing a design from Figma.
 
