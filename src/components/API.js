@@ -42,13 +42,6 @@ export default class Api {
 
     return this._request(url, options);
   }
-  /*updateProfileInfo(name, about) {
-    return this._request(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({ name, about }),
-    });
-  }*/
 
   //PATCH /users/me/avatar – Update avatar
   updateAvatar(url) {
